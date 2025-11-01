@@ -5,7 +5,7 @@ import ResourceCard from "../components/ResourceCard";
 
 export default function Home() {
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-white to-emerald-50 text-gray-900 overflow-hidden">
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-linear-to-br from-amber-50 via-white to-emerald-50 text-gray-900 overflow-hidden">
       {/* Header */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
