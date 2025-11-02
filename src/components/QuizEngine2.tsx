@@ -34,12 +34,11 @@ export default function QuizEngine2({ questions, numQuestions = 15 }: Props) {
   const selected = answers[index];
 
   const score = useMemo(() => {
-    if (!submitted) return 0;
-    return answers.reduce(
-      (acc, a, i) => acc + (a === quizQuestions[i]?.correct ? 1 : 0),
-      0
-    );
-  }, [submitted, answers, quizQuestions]);
+  if (!submitted) return 0;
+  return answers.reduce((acc: number, a, i) => {
+    return acc + (a === quizQuestions[i]?.correct ? 1 : 0);
+  }, 0);
+}, [submitted, answers, quizQuestions]);
 
   function choose(optionIdx: number) {
     setAnswers(prev => {
