@@ -44,9 +44,6 @@ export default function Navbar() {
             onMouseLeave={() => setOpenMenu(null)}
           >
             <button
-              onClick={() =>
-                setOpenMenu(openMenu === "databricks" ? null : "databricks")
-              }
               className={`${baseLinkClass} ${
                 pathname.startsWith("/databricks")
                   ? activeClass
@@ -55,30 +52,35 @@ export default function Navbar() {
             >
               Databricks ▾
             </button>
-            {openMenu === "databricks" && (
-              <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
-                <Link
-                  to="/databricks-fundamentals"
-                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 ${
-                    pathname === "/databricks-fundamentals"
-                      ? "font-semibold text-emerald-700 bg-emerald-50"
-                      : ""
-                  }`}
-                >
-                  Fundamentals
-                </Link>
-                <Link
-                  to="/databricks-architect"
-                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 ${
-                    pathname === "/databricks-architect"
-                      ? "font-semibold text-emerald-700 bg-emerald-50"
-                      : ""
-                  }`}
-                >
-                  Architect
-                </Link>
-              </div>
-            )}
+
+            <div
+              className={`absolute right-0 mt-1 w-56 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50 transition-all duration-150 ${
+                openMenu === "databricks"
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible -translate-y-2"
+              }`}
+            >
+              <Link
+                to="/databricks-fundamentals"
+                className={`block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 ${
+                  pathname === "/databricks-fundamentals"
+                    ? "font-semibold text-emerald-700 bg-emerald-50"
+                    : ""
+                }`}
+              >
+                Fundamentals
+              </Link>
+              <Link
+                to="/databricks-architect"
+                className={`block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 ${
+                  pathname === "/databricks-architect"
+                    ? "font-semibold text-emerald-700 bg-emerald-50"
+                    : ""
+                }`}
+              >
+                Architect
+              </Link>
+            </div>
           </div>
 
           {/* Labs Dropdown */}
@@ -88,22 +90,34 @@ export default function Navbar() {
             onMouseLeave={() => setOpenMenu(null)}
           >
             <button
-              onClick={() =>
-                setOpenMenu(openMenu === "labs" ? null : "labs")
-              }
               className={`${baseLinkClass} ${
                 pathname.startsWith("/labs") ? activeClass : "text-gray-600"
               } flex items-center gap-1`}
             >
               Labs ▾
             </button>
-            {openMenu === "labs" && (
-              <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
-                <div className="px-4 py-2 text-sm text-gray-500 italic">
-                  Coming Soon
-                </div>
+
+            <div
+              className={`absolute right-0 mt-1 w-56 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50 transition-all duration-150 ${
+                openMenu === "labs"
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible -translate-y-2"
+              }`}
+            >
+              <Link
+                to="/labs/dp900-relational"
+                className={`block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 ${
+                  pathname === "/labs/dp900-relational"
+                    ? "font-semibold text-emerald-700 bg-emerald-50"
+                    : ""
+                }`}
+              >
+                DP-900: Relational Concepts
+              </Link>
+              <div className="px-4 py-2 text-sm text-gray-500 italic">
+                More Labs Coming Soon
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
